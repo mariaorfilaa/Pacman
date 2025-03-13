@@ -8,14 +8,12 @@
 .grid div{
     width: 20px;
     height: 20px;
-    border: solid red;
-    box-sizing: border-box;
 }
 .red{
     background-color: red;
 }
 .pink{
-    background-color: pink;
+    background-color: rgb(210, 65, 89);
 }
 .blue{
     background-color: blue;
@@ -31,4 +29,32 @@ body{
     align-content: center;
     text-align: center;
     background: pink;
+}
+
+.princep{
+background-image: url(./img/caballero.png);
+background: rgb(6, 6, 115);
+}
+.drac1{
+background: red;
+background-image: url(./img/rojodragon.png);
+}
+.drac2{
+background: green;
+background-image: url(./img/dragon.png);
+}
+.drac3{
+background: blue;
+background-image: url(./img/azuldragon.png);
+}
+.drac4{
+background: violet;
+background-image: url(./img/liladragon.png);
+}
+.drac-assustat{
+background-image: url(./img/dracassustat.png);
+background: white;
+}
+.paret{
+    background-image: url(./img/paret.png);
 }
