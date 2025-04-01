@@ -1,16 +1,18 @@
 .grid{
     width: 560px;
     height: 560px;
-    border: solid black;
+    border: solid rgb(8, 7, 8);
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 .grid div{
     width: 20px;
     height: 20px;
 }
 .red{
-    background-color: red;
+    background-color: rgb(138, 8, 8);
 }
 .pink{
     background-color: rgb(210, 65, 89);
@@ -19,7 +21,7 @@
     background-color: blue;
 }
 .green{
-    background-color:green;
+    background-color:rgb(2, 66, 2);
 }
 .brown{
     background-color: rgb(75, 2, 2);
@@ -28,11 +30,10 @@
 body{
     align-content: center;
     text-align: center;
-    background: pink;
+    background: rgb(73, 73, 73);
 }
-
 .princep{
-background-image: url(./img/caballero.png);
+background-image: url(./img/caballero1.png);
 background: rgb(6, 6, 115);
 }
 .drac1{
