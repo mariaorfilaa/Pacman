@@ -1,7 +1,14 @@
+
+body{
+    align-content: center;
+    text-align: center;
+    background: rgb(122, 122, 122);
+}
+
 .grid{
     width: 560px;
     height: 560px;
-    border: solid rgb(8, 7, 8);
+    border: solid rgb(90, 0, 50);
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -11,11 +18,24 @@
     width: 20px;
     height: 20px;
 }
-.red{
-    background-color: rgb(138, 8, 8);
+
+h1{
+    margin-bottom: -80px;
+    margin-top: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:  rgb(107, 5, 65);
 }
-.pink{
-    background-color: rgb(210, 65, 89);
+
+
+.red{
+    background-color: rgb(107, 5, 65);
+}
+.laberinto{
+    content: url(./img/petal.png);
+    background-color: rgb(80, 6, 18);
+}
+.paret{
+    content: url(./img/paret.png);
 }
 .blue{
     background-color: blue;
@@ -23,39 +43,28 @@
 .green{
     background-color:rgb(2, 66, 2);
 }
-.brown{
+.cami{
     background-color: rgb(75, 2, 2);
 }
-
-body{
-    align-content: center;
-    text-align: center;
-    background: rgb(73, 73, 73);
-}
 .princep{
-background-image: url(./img/caballero1.png);
-background: rgb(6, 6, 115);
+content: url(./img/caballero1.png);
+}
+.princesa{
+content: url(./img/princesa.png);
+}
+
+.drac2{
+content: url(./img/rojodragon.png);
 }
 .drac1{
-background: red;
-background-image: url(./img/rojodragon.png);
-}
-.drac2{
-background: green;
-background-image: url(./img/dragon.png);
+content: url(./img/dragon.png);
 }
 .drac3{
-background: blue;
-background-image: url(./img/azuldragon.png);
+content: url(./img/azuldragon.png);
 }
 .drac4{
-background: violet;
-background-image: url(./img/liladragon.png);
+content: url(./img/liladragon.png);
 }
 .drac-assustat{
-background-image: url(./img/dracassustat.png);
-background: white;
-}
-.paret{
-    background-image: url(./img/paret.png);
+content: url(./img/dracassustat.png);
 }

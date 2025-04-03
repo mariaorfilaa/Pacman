@@ -4,6 +4,7 @@ const width = 28;
 let score = 0;
 const grid = document.querySelector (".grid");
 
+
 //0 -pètal
 //1 - mur
 //2 - cova
@@ -47,15 +48,19 @@ function createBoard(){
     for(let i=0; i < layout.length; i ++){
         const square = document.createElement ('div')
         if(layout[i]==5){
-            square.classList.add("brown")
+            square.classList.add("cami")
+        }else if (layout [i]==0){
+            square.classList.add("laberinto")
         }else if (layout [i]==1){
             square.classList.add("paret")
         }else if (layout [i]==2){
             square.classList.add("red")
         }else if (layout [i]==3){
             square.classList.add("princep")
-        }else if (layout [i]==0){
-            square.classList.add("green")
+        }else if (layout [i]==7){
+            square.classList.add("princesa")
+        }else if (layout [i]==9){
+            square.classList.add("rosa")
         }
         grid.appendChild (square);
         squares.push(square)
@@ -67,8 +72,6 @@ console.log(squares)
 
 let posicioPrincep = 30;
 squares[posicioPrincep].classList.add("princep");
-
-    
 function movePrincep(e) {
     squares[posicioPrincep].classList.remove("princep");
     switch (e.key) {
@@ -94,8 +97,53 @@ function movePrincep(e) {
             break;
     }
     squares[posicioPrincep].classList.add("princep");
+    
+    petalAgafat()
+    rosaAgafada()
+    checkForWin()
+    checkForGameOver()
+
 }
 
-document.addEventListener ('keyup', movePrincep);
+document.addEventListener ('keyup', movePrincep)
 
-})
+function petalAgafat (){
+    if(squares[posicioPrincep].classlist.contains('petal')){
+        score ++
+        scoreDisplay.innerHTML=score 
+        squares[posicioPrincep].classlist.remove('rosa')
+}
+}
+
+let posicioPrincesa = 660;
+squares[posicioPrincesa].classList.add("princesa");    
+function movePrincesa(e) {
+    squares[posicioPrincesa].classList.remove("princesa");
+    switch (e.key) {
+        case 'ArrowLeft':
+            if(!squares[posicioPrincesa-1].classList.contains('paret')&&
+                !squares[posicioPrincesa-1].classList.contains('red'))
+            posicioPrincesa -= 1
+            break;
+        case 'ArrowRight':
+            if(!squares[posicioPrincesa+1].classList.contains('paret')&&
+                !squares[posicioPrincesa+1].classList.contains('red'))
+            posicioPrincesa += 1
+            break;
+            case 'ArrowUp':
+                if(!squares[posicioPrincesa-28].classList.contains('paret')&&
+                !squares[posicioPrincesa-28].classList.contains('red'))
+            posicioPrincesa -= 28
+            break;
+        case 'ArrowDown':
+            if(!squares[posicioPrincesa+28].classList.contains('paret')&&
+                !squares[posicioPrincesa+28].classList.contains('red'))
+            posicioPrincesa += 28
+            break;
+    }
+    squares[posicioPrincesa].classList.add("princesa");
+}
+
+document.addEventListener ('keyup', movePrincesa);
+}
+)
