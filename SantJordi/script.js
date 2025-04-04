@@ -11,12 +11,13 @@ const grid = document.querySelector (".grid");
 //3 - rosa
 //4 - buit
 
-const layout = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+const layout = [
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -28,7 +29,7 @@ const layout = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 2, 2, 2, 2, 2, 2, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+    1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1,
     1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1,
@@ -100,42 +101,67 @@ function movePrincep(e) {
     
     petalAgafat()
     rosaAgafada()
-    checkForWin()
-    checkForGameOver()
+    //checkForWin()
+    //checkForGameOver()
 
 }
 
 document.addEventListener ('keyup', movePrincep)
 
 function petalAgafat (){
-    if(squares[posicioPrincep].classlist.contains('petal')){
+    if(squares[posicioPrincep].classList.contains('laberinto')){
         score ++
-        scoreDisplay.innerHTML=score 
-        squares[posicioPrincep].classlist.remove('rosa')
+        scoreDisplay.innerHTML = score 
+        squares[posicioPrincep].classList.remove('laberinto')
 }
 }
+
+function rosaAgafada (){
+    if(squares[posicioPrincesa].classList.contains('rosa')){
+        score ++
+        scoreDisplay.innerHTML = score 
+        squares[posicioPrincesa].classList.remove('rosa')
+}
+}
+class Drac {
+    constructor (className, startIndex, speed){
+        this.className=className
+        this.startIndex=startIndex
+        this.speed=speed
+        this.currentIndex=startIndex
+        this.isScared= false
+        this.timerId= NaN
+    }
+}
+const dracs = [
+    new Drac ('drac1', 350, 250),
+    new Drac ('drac2', 348, 250),
+    new Drac ('drac3', 348, 250),
+    new Drac ('drac4', 348, 250),
+    new Drac ('drac', 348, 250)
+]
 
 let posicioPrincesa = 660;
 squares[posicioPrincesa].classList.add("princesa");    
 function movePrincesa(e) {
     squares[posicioPrincesa].classList.remove("princesa");
     switch (e.key) {
-        case 'ArrowLeft':
+        case 'a':
             if(!squares[posicioPrincesa-1].classList.contains('paret')&&
                 !squares[posicioPrincesa-1].classList.contains('red'))
             posicioPrincesa -= 1
             break;
-        case 'ArrowRight':
+        case 'd':
             if(!squares[posicioPrincesa+1].classList.contains('paret')&&
                 !squares[posicioPrincesa+1].classList.contains('red'))
             posicioPrincesa += 1
             break;
-            case 'ArrowUp':
+            case 'w':
                 if(!squares[posicioPrincesa-28].classList.contains('paret')&&
                 !squares[posicioPrincesa-28].classList.contains('red'))
             posicioPrincesa -= 28
             break;
-        case 'ArrowDown':
+        case 's':
             if(!squares[posicioPrincesa+28].classList.contains('paret')&&
                 !squares[posicioPrincesa+28].classList.contains('red'))
             posicioPrincesa += 28
@@ -147,3 +173,4 @@ function movePrincesa(e) {
 document.addEventListener ('keyup', movePrincesa);
 }
 )
+
