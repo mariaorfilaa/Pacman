@@ -136,10 +136,26 @@ class Drac {
 const dracs = [
     new Drac ('drac1', 350, 250),
     new Drac ('drac2', 348, 250),
-    new Drac ('drac3', 348, 250),
-    new Drac ('drac4', 348, 250),
-    new Drac ('drac', 348, 250)
+    new Drac ('drac3', 349, 250),
+    new Drac ('drac4', 351, 250),
 ]
+
+dracs.forEach(drac=>{
+squares[drac.currentIndex].classList.add(drac.className, 'drac')
+})
+
+dracs.forEach(drac=>moveDrac(drac))
+
+function moveDrac(drac){
+const directions =[-1,1,width,-width]
+let direction = directions[Math.floor(Math.random()*directions.length)]
+if(
+    !squares[drac.currentIndex+direction].classList.contains('mur') &&
+    !squares[drac.currentIndex+direction].classList.contains('drac')
+){
+
+}
+}
 
 let posicioPrincesa = 660;
 squares[posicioPrincesa].classList.add("princesa");    
