@@ -4,7 +4,6 @@ const width = 28;
 let score = 0;
 const grid = document.querySelector (".grid");
 
-
 //0 -pètal
 //1 - mur
 //2 - cova
@@ -41,7 +40,6 @@ const layout = [
     1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 ]
-
 //Create board
 let squares = [];
 
@@ -118,11 +116,21 @@ function petalAgafat (){
 
 function rosaAgafada (){
     if(squares[posicioPrincesa].classList.contains('rosa')){
-        score ++
+        score += 10
         scoreDisplay.innerHTML = score 
         squares[posicioPrincesa].classList.remove('rosa')
+
+        espantaDracs(true)
+        setTimeout(()=>espantaDracs(false),1000)
 }
 }
+
+function espantaDracs (scaredDrac){
+    dracs.forEach(drac=> drac.isScared=scaredDrac)
+}
+
+
+
 class Drac {
     constructor (className, startIndex, speed){
         this.className=className
@@ -135,7 +143,7 @@ class Drac {
 }
 const dracs = [
     new Drac ('drac1', 350, 250),
-    new Drac ('drac2', 348, 250),
+    new Drac ('drac2', 348, 400),
     new Drac ('drac3', 349, 250),
     new Drac ('drac4', 351, 250),
 ]
@@ -149,12 +157,24 @@ dracs.forEach(drac=>moveDrac(drac))
 function moveDrac(drac){
 const directions =[-1,1,width,-width]
 let direction = directions[Math.floor(Math.random()*directions.length)]
-if(
-    !squares[drac.currentIndex+direction].classList.contains('mur') &&
-    !squares[drac.currentIndex+direction].classList.contains('drac')
-){
 
-}
+drac.timerId = setInterval(function(){
+    if(
+        !squares[drac.currentIndex+direction].classList.contains('paret') &&
+        !squares[drac.currentIndex+direction].classList.contains('drac')
+    ){
+        squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-assustat')
+        drac.currentIndex+=direction
+        squares[drac.currentIndex].classList.add(drac.className, 'drac')
+    
+    } else direction=direction[Math.floor(Math.random()*directions.length)]  
+
+    if(drac.isScared){
+        squares[drac.currentIndex].classList.add(drac.className, 'drac')
+        
+    }
+},drac.speed
+)
 }
 
 let posicioPrincesa = 660;
