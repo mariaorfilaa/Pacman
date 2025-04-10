@@ -113,7 +113,7 @@ function petalAgafat (){
         squares[posicioPrincep].classList.remove('laberinto')
 }
 }
-
+document.addEventListener ('keyup', movePrincesa)
 function rosaAgafada (){
     if(squares[posicioPrincesa].classList.contains('rosa')){
         score += 10
@@ -158,22 +158,36 @@ function moveDrac(drac){
 const directions =[-1,1,width,-width]
 let direction = directions[Math.floor(Math.random()*directions.length)]
 
-drac.timerId = setInterval(function(){
-    if(
-        !squares[drac.currentIndex+direction].classList.contains('paret') &&
-        !squares[drac.currentIndex+direction].classList.contains('drac')
-    ){
-        squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-assustat')
-        drac.currentIndex+=direction
-        squares[drac.currentIndex].classList.add(drac.className, 'drac')
-    
-    } else direction=direction[Math.floor(Math.random()*directions.length)]  
 
-    if(drac.isScared){
-        squares[drac.currentIndex].classList.add(drac.className, 'drac')
-        
+drac.timerId = setInterval(function () {
+    if (
+        !squares[drac.currentIndex + direction].classList.contains('paret') &&
+        !squares[drac.currentIndex + direction].classList.contains('drac')
+    ) {
+        squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-assustat');
+        drac.currentIndex += direction;
+        squares[drac.currentIndex].classList.add(drac.className, 'drac');
+    } else {
+        direction = directions[Math.floor(Math.random() * directions.length)];
     }
-},drac.speed
+
+    if (drac.isScared) {
+        squares[drac.currentIndex].classList.add(drac.className, 'drac', 'drac-assustat');
+    }
+
+    if (
+        drac.isScared &&
+        squares[drac.currentIndex].classList.contains('princesa')
+    ) {
+        score += 100;
+        scoreDisplay.innerHTML = score;
+        drac.isScared = false;
+        squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-assustat');
+        drac.currentIndex = drac.startIndex;
+        squares[drac.currentIndex].classList.add(drac.className, 'drac');
+    }
+    
+}, drac.speed
 )
 }
 
@@ -204,6 +218,9 @@ function movePrincesa(e) {
             break;
     }
     squares[posicioPrincesa].classList.add("princesa");
+
+    petalAgafat()
+    rosaAgafada()
 }
 
 document.addEventListener ('keyup', movePrincesa);
