@@ -195,13 +195,21 @@ document.addEventListener("DOMContentLoaded", function(){
     )
     }
     
-    function checkForGameOver (){
-        if(squares[posicioPrincep].className.contains ('drac') &&
-         !squares[posicioPrincesa].className.contains ('drac-assustat')){
-             dracs.forEach(drac =>clearInterval(drac.timerId))
-             document.removeEventListener('keyup', movePrincep)
-             setTimeout(function(){alert('Game Over')})
-            }
+    function checkForGameOver() {
+        if (
+            squares[posicioPrincep].classList.contains('drac') &&
+            !squares[posicioPrincep].classList.contains('drac-assustat')
+        ) {
+            // Cambiar color de todos los dragones a negro
+            dracs.forEach(drac => {
+                clearInterval(drac.timerId);
+                squares[drac.currentIndex].classList.add('drac-negre');
+            });
+    
+            document.removeEventListener('keyup', movePrincep);
+            setTimeout(function () { alert('Game Over') }, 100);
+        }
+
 }
     function checkForWin(){
     if(score>= 10){
